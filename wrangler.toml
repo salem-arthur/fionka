@@ -1,0 +1,15 @@
+name = "fionka"
+pages_build_output_dir = "."
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "fionka-db"
+database_id = "a3fd9bc1-20d2-464e-ae59-46c49ce29c68"
+
+# JWT Secret (set via Cloudflare dashboard > Workers & Pages > fionka > Settings > Variables > Secrets)
+[vars]
+JWT_SECRET = "fionka_jwt_secret_2026"
+
+# Compatibility date
+compatibility_date = "2025-04-01"

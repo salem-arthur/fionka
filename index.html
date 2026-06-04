@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fionka Luxury - إكسسوارات فاخرة، خواتم، سلاسل، ساعات، انسيالات وكابلز">
+    <meta name="keywords" content="فيونكة, اكسسوارات, خواتم, سلاسل, ساعات, انسيالات, كابلز, فاخر">
+    <meta name="author" content="Fionka - Sahar Fionka">
+    <meta property="og:title" content="Fionka | Luxury Accessories">
+    <meta property="og:description" content="اكتشفي أرقى الإكسسوارات الفاخرة">
+    <meta property="og:type" content="website">
+    <title>Fionka | Luxury Accessories ✦</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'unsafe-inline' https:; style-src 'unsafe-inline' https:; img-src 'self' data: https:; font-src https:; connect-src https:;">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- شاشة تحميل -->
+<div id="loading">
+    <div class="loader-logo">Fionka<span>.</span></div>
+    <div class="loader-tagline">Luxury Accessories</div>
+    <div class="loader-bar-wrap"><div class="loader-bar-fill" id="loaderFill"></div></div>
+    <div class="loader-percent" id="loaderPercent">0%</div>
+</div>
+
+<!-- شريط التقدم -->
+<div id="progressContainer"><div id="progressBar"></div></div>
+
+<!-- إشعار الكوكيز -->
+<div id="cookieBanner" class="cookie-banner">
+    <div class="cookie-content">
+        <i class="fas fa-cookie-bite"></i>
+        <span>نستخدم ملفات الكوكيز لتحسين تجربتك. بالاستمرار فأنت توافق على <a href="#" id="privacyLink">سياسة الخصوصية</a>.</span>
+    </div>
+    <div class="cookie-actions">
+        <button id="acceptCookies" class="btn-cookie-accept">موافق</button>
+        <button id="rejectCookies" class="btn-cookie-reject">رفض</button>
+    </div>
+</div>
+
+<!-- navbar -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <button class="menu-btn" id="menuBtn" aria-label="القائمة"><i class="fas fa-bars"></i></button>
+        <a href="#home" class="logo" aria-label="Fionka الرئيسية">Fionka<span>.</span></a>
+        <div class="nav-links desktop-nav">
+            <a href="#home" class="nav-link active">الرئيسية</a>
+            <a href="#products" class="nav-link">المنتجات</a>
+            <a href="#offers" class="nav-link">العروض</a>
+            <a href="#about" class="nav-link">عن العلامة</a>
+            <a href="#contact" class="nav-link">تواصل</a>
+        </div>
+        <div class="nav-icons">
+            <button class="icon-btn" id="searchBtn" aria-label="بحث"><i class="fas fa-search"></i></button>
+            <button class="icon-btn" id="compareBtn" aria-label="مقارنة" title="مقارنة المنتجات">
+                <i class="fas fa-balance-scale"></i>
+                <span class="badge" id="compareCount">0</span>
+            </button>
+            <button class="icon-btn" id="themeBtn" aria-label="تغيير الثيم"><i class="fas fa-moon"></i></button>
+            <button class="icon-btn" id="wishlistBtn" aria-label="المفضلة">
+                <i class="far fa-heart"></i>
+                <span class="badge" id="wishCount">0</span>
+            </button>
+            <button class="icon-btn" id="cartBtn" aria-label="السلة">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="badge" id="cartCount">0</span>
+            </button>
+        </div>
+    </div>
+    <div class="search-box" id="searchBox">
+        <div class="search-inner">
+            <i class="fas fa-search search-ico"></i>
+            <input type="text" id="searchInput" placeholder="ابحثي عن منتج، قسم، أو وصف..." autocomplete="off">
+            <button id="clearSearch" class="clear-search" aria-label="مسح البحث" style="display:none">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="searchSuggestions" class="search-suggestions"></div>
+    </div>
+</nav>
+
+<!-- القائمة الجانبية -->
+<div class="side-overlay" id="sideOverlay"></div>
+<aside class="side-menu" id="sideMenu">
+    <div class="side-header">
+        <span class="side-logo">Fionka<span>.</span></span>
+        <button id="closeMenu" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="side-user">
+        <div class="side-user-avatar"><i class="fas fa-user"></i></div>
+        <div>
+            <div style="font-weight:700;font-size:0.95rem;">مرحباً بك ✦</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);">عالم Fionka الفخم</div>
+        </div>
+    </div>
+    <nav class="side-links">
+        <a href="#home"     class="side-link"><i class="fas fa-home"></i><span>الرئيسية</span></a>
+        <a href="#products" class="side-link"><i class="fas fa-gem"></i><span>جميع المنتجات</span></a>
+        <div class="side-divider"><span>الأقسام</span></div>
+        <a href="#" class="side-link" data-cat="rings">    <i class="fas fa-ring"></i>      <span>خواتم</span></a>
+        <a href="#" class="side-link" data-cat="earrings"> <i class="fas fa-star"></i>      <span>انسيالات</span></a>
+        <a href="#" class="side-link" data-cat="necklaces"><i class="fas fa-link"></i>      <span>سلاسل</span></a>
+        <a href="#" class="side-link" data-cat="watches">  <i class="fas fa-clock"></i>     <span>ساعات</span></a>
+        <a href="#" class="side-link" data-cat="couples">  <i class="fas fa-heart"></i>     <span>كابلز</span></a>
+        <div class="side-divider"><span>اكتشفي</span></div>
+        <a href="#" class="side-link" id="sideBestseller"><i class="fas fa-trophy"></i>     <span>الأكثر مبيعاً</span></a>
+        <a href="#" class="side-link" id="sideNew">        <i class="fas fa-certificate"></i><span>الجديد</span></a>
+        <a href="#" class="side-link" id="sideFeatured">   <i class="fas fa-crown"></i>     <span>المميزة</span></a>
+        <a href="#" class="side-link" id="sideOffers">     <i class="fas fa-tags"></i>      <span>العروض</span></a>
+        <div class="side-divider"><span>أخرى</span></div>
+        <a href="#about"   class="side-link"><i class="fas fa-info-circle"></i><span>عن العلامة</span></a>
+        <a href="#contact" class="side-link"><i class="fas fa-envelope"></i>  <span>تواصل معنا</span></a>
+        <a href="https://wa.me/201229507232" target="_blank" class="side-link side-whatsapp">
+            <i class="fab fa-whatsapp"></i><span>واتساب الدعم</span>
+        </a>
+    </nav>
+    <div class="side-footer">
+        <div class="side-social">
+            <a href="https://wa.me/201229507232" target="_blank" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" id="sideInstaLink" target="_blank" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
+            <a href="#" id="sideTikTokLink" target="_blank" aria-label="تيك توك"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <div class="side-copy">© 2026 Fionka</div>
+    </div>
+</aside>
+
+<!-- canvas جسيمات -->
+<canvas id="particlesCanvas" aria-hidden="true"></canvas>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-shapes" aria-hidden="true">
+        <div class="hero-shape s1"></div>
+        <div class="hero-shape s2"></div>
+        <div class="hero-shape s3"></div>
+    </div>
+    <div class="hero-content">
+        <div class="hero-badge" id="heroBadgeText">✦ كولكشن 2026 ✦</div>
+        <h1 id="heroTitle">Fionka <span class="hero-accent">Luxury</span></h1>
+        <p class="hero-sub" id="heroText">يا هلا وغلا بحضرتك في عالم Fionka الفخم! هنا كل قطعة تحكي قصة أناقة وذوق رفيع. اختاري تحفتك النادرة ♥</p>
+        <div class="hero-btns">
+            <button class="btn-primary" id="shopNow"><i class="fas fa-gem"></i> تسوقي الآن</button>
+            <button class="btn-ghost"   id="viewOffersHero"><i class="fas fa-fire"></i> العروض</button>
+        </div>
+        <div class="hero-trust">
+            <div class="trust-item"><i class="fas fa-shield-alt"></i><span>ضمان الجودة</span></div>
+            <div class="trust-sep"></div>
+            <div class="trust-item"><i class="fas fa-shipping-fast"></i><span>توصيل سريع</span></div>
+            <div class="trust-sep"></div>
+            <div class="trust-item"><i class="fas fa-undo"></i><span>إرجاع 14 يوم</span></div>
+            <div class="trust-sep"></div>
+            <div class="trust-item"><i class="fab fa-whatsapp"></i><span>دعم فوري</span></div>
+        </div>
+    </div>
+    <div class="hero-scroll-hint" id="heroScroll">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- ===== شريط الإعلانات ===== -->
+<div class="marquee-bar" id="marqueeBar">
+    <div class="marquee-track" id="marqueeTrack">
+        <span>✦ شحن مجاني على الطلبات فوق 500 ج.م</span>
+        <span>✦ خصم 10% على أول طلب بكود FIONKA10</span>
+        <span>✦ كولكشن 2026 متاح الآن</span>
+        <span>✦ ضمان جودة على جميع المنتجات</span>
+        <span>✦ إرجاع مجاني خلال 14 يوم</span>
+        <span>✦ شحن مجاني على الطلبات فوق 500 ج.م</span>
+        <span>✦ خصم 10% على أول طلب بكود FIONKA10</span>
+        <span>✦ كولكشن 2026 متاح الآن</span>
+        <span>✦ ضمان جودة على جميع المنتجات</span>
+        <span>✦ إرجاع مجاني خلال 14 يوم</span>
+    </div>
+</div>
+
+<!-- ===== الفئات البصرية ===== -->
+<section class="visual-cats" id="visualCats">
+    <div class="section-header">
+        <h2>تسوق حسب <span class="gradient-text">القسم</span></h2>
+        <div class="sep"></div>
+    </div>
+    <div class="vis-cats-grid">
+        <div class="vis-cat" data-cat="rings">
+            <div class="vis-cat-icon"><i class="fas fa-ring"></i></div>
+            <div class="vis-cat-name">خواتم</div>
+            <div class="vis-cat-count" data-cat-count="rings">0 منتج</div>
+        </div>
+        <div class="vis-cat" data-cat="earrings">
+            <div class="vis-cat-icon"><i class="fas fa-star"></i></div>
+            <div class="vis-cat-name">انسيالات</div>
+            <div class="vis-cat-count" data-cat-count="earrings">0 منتج</div>
+        </div>
+        <div class="vis-cat" data-cat="necklaces">
+            <div class="vis-cat-icon"><i class="fas fa-link"></i></div>
+            <div class="vis-cat-name">سلاسل</div>
+            <div class="vis-cat-count" data-cat-count="necklaces">0 منتج</div>
+        </div>
+        <div class="vis-cat" data-cat="watches">
+            <div class="vis-cat-icon"><i class="fas fa-clock"></i></div>
+            <div class="vis-cat-name">ساعات</div>
+            <div class="vis-cat-count" data-cat-count="watches">0 منتج</div>
+        </div>
+        <div class="vis-cat" data-cat="couples">
+            <div class="vis-cat-icon"><i class="fas fa-heart"></i></div>
+            <div class="vis-cat-name">كابلز</div>
+            <div class="vis-cat-count" data-cat-count="couples">0 منتج</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== شريط الفلتر ===== -->
+<div class="filter-bar sticky-filter" id="filterBar">
+    <button class="filter-toggle" id="filterToggle" aria-label="إظهار/إخفاء الفلتر"><i class="fas fa-chevron-up"></i></button>
+    <div class="filter-inner">
+        <div class="filter-group">
+            <select id="categoryFilter" aria-label="فلترة حسب الفئة">
+                <option value="all">🔷 جميع الأقسام</option>
+                <option value="rings">💍 خواتم</option>
+                <option value="earrings">⭐ انسيالات</option>
+                <option value="necklaces">🔗 سلاسل</option>
+                <option value="watches">⌚ ساعات</option>
+                <option value="couples">❤️ كابلز</option>
+            </select>
+        </div>
+        <div class="filter-group price-filter">
+            <span class="filter-label">السعر:</span>
+            <input type="range" id="priceRange" min="0" max="5000" value="5000" step="50">
+            <span id="priceVal" class="price-val">5000 ج.م</span>
+        </div>
+        <div class="filter-group">
+            <select id="sortSelect" aria-label="الترتيب">
+                <option value="default">↕ الترتيب</option>
+                <option value="priceAsc">↑ السعر الأقل</option>
+                <option value="priceDesc">↓ السعر الأعلى</option>
+                <option value="rating">⭐ الأعلى تقييماً</option>
+                <option value="bestseller">🔥 الأكثر مبيعاً</option>
+                <option value="newest">🆕 الأحدث</option>
+                <option value="mostViewed">👁 الأكثر مشاهدة</option>
+            </select>
+        </div>
+        <div class="filter-actions">
+            <button id="filterBtn"  class="btn-filter"><i class="fas fa-sliders-h"></i> فلتر</button>
+            <button id="resetBtn"   class="btn-reset"> <i class="fas fa-redo"></i></button>
+            <button id="gridToggle" class="btn-reset"  title="تغيير طريقة العرض">
+                <i class="fas fa-th" id="gridToggleIcon"></i>
+            </button>
+        </div>
+    </div>
+    <div class="filter-chips" id="filterChips"></div>
+</div>
+
+<!-- ===== المنتجات ===== -->
+<section id="products" class="products-section">
+    <div class="section-header">
+        <h2>تشكيلتنا <span class="gradient-text">الفاخرة</span></h2>
+        <div class="sep"></div>
+        <p class="section-sub" id="productsSubtitle">اكتشفي أرقى الإكسسوارات المصممة بعناية فائقة</p>
+    </div>
+    <div id="productsGrid" class="products-grid" role="list"></div>
+    <div id="noProducts" class="empty-state" style="display:none">
+        <div class="empty-icon"><i class="fas fa-search"></i></div>
+        <h3>لا توجد منتجات</h3>
+        <p>جربي تغيير معايير البحث أو الفلترة</p>
+        <button class="btn-ghost" id="emptyReset">إعادة تعيين الفلتر</button>
+    </div>
+    <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+        <button class="btn-ghost" id="loadMoreBtn"><i class="fas fa-plus"></i> عرض المزيد</button>
+    </div>
+</section>
+
+<!-- ===== أقسام الفئات ===== -->
+<div class="categories-wrapper">
+    <div class="cat-section reveal-el" id="catRings">
+        <div class="cat-header">
+            <h3><i class="fas fa-ring"></i> خواتم</h3>
+            <button class="btn-view-all" data-cat="rings">عرض الكل <i class="fas fa-arrow-left"></i></button>
+        </div>
+        <div id="ringsGrid" class="cat-grid" role="list"></div>
+    </div>
+    <div class="cat-section reveal-el" id="catEarrings">
+        <div class="cat-header">
+            <h3><i class="fas fa-star"></i> انسيالات</h3>
+            <button class="btn-view-all" data-cat="earrings">عرض الكل <i class="fas fa-arrow-left"></i></button>
+        </div>
+        <div id="earringsGrid" class="cat-grid" role="list"></div>
+    </div>
+    <div class="cat-section reveal-el" id="catNecklaces">
+        <div class="cat-header">
+            <h3><i class="fas fa-link"></i> سلاسل</h3>
+            <button class="btn-view-all" data-cat="necklaces">عرض الكل <i class="fas fa-arrow-left"></i></button>
+        </div>
+        <div id="necklacesGrid" class="cat-grid" role="list"></div>
+    </div>
+    <div class="cat-section reveal-el" id="catWatches">
+        <div class="cat-header">
+            <h3><i class="fas fa-clock"></i> ساعات</h3>
+            <button class="btn-view-all" data-cat="watches">عرض الكل <i class="fas fa-arrow-left"></i></button>
+        </div>
+        <div id="watchesGrid" class="cat-grid" role="list"></div>
+    </div>
+    <div class="cat-section reveal-el" id="catCouples">
+        <div class="cat-header">
+            <h3><i class="fas fa-heart"></i> كابلز</h3>
+            <button class="btn-view-all" data-cat="couples">عرض الكل <i class="fas fa-arrow-left"></i></button>
+        </div>
+        <div id="couplesGrid" class="cat-grid" role="list"></div>
+    </div>
+</div>
+
+<!-- ===== منتجات شاهدتها مؤخراً ===== -->
+<section class="recently-viewed" id="recentlyViewedSection" style="display:none">
+    <div class="section-header">
+        <h2>شاهدتِ <span class="gradient-text">مؤخراً</span></h2>
+        <div class="sep"></div>
+    </div>
+    <div id="recentlyViewedGrid" class="cat-grid" role="list"></div>
+</section>
+
+<!-- ===== العروض ===== -->
+<section id="offers" class="offers-section reveal-el">
+    <div class="offers-inner">
+        <div class="offer-ribbon" id="offerRibbonText">عرض محدود الوقت</div>
+        <h3 id="offerTitle">🎉 خصم يصل إلى <span class="offer-pct" id="offerPctText">30%</span></h3>
+        <p id="offerSubText">استغلي الفرصة قبل انتهاء العد التنازلي!</p>
+        <div id="countdown" class="countdown"></div>
+        <button class="btn-primary" id="shopOffersBtn"><i class="fas fa-fire"></i> تسوق العروض الآن</button>
+    </div>
+</section>
+
+<!-- ===== آراء العملاء ===== -->
+<section class="reviews-section reveal-el" id="reviewsSection">
+    <div class="section-header">
+        <h2>آراء <span class="gradient-text">عملاؤنا</span></h2>
+        <div class="sep"></div>
+    </div>
+    <div class="reviews-grid" id="reviewsGrid"></div>
+    <div class="add-review-wrap">
+        <button class="btn-ghost" id="openReviewBtn"><i class="fas fa-pen"></i> أضف رأيك</button>
+    </div>
+</section>
+
+<!-- ===== مقارنة المنتجات ===== -->
+<div id="compareBar" class="compare-bar" style="display:none">
+    <div class="compare-bar-inner">
+        <span class="compare-title">مقارنة المنتجات</span>
+        <div id="compareItems" class="compare-items"></div>
+        <button class="btn-primary" id="doCompareBtn"><i class="fas fa-balance-scale"></i> قارن الآن</button>
+        <button class="btn-ghost"   id="clearCompareBtn">مسح</button>
+    </div>
+</div>
+
+<!-- ===== سوشيال ===== -->
+<div class="social-section reveal-el">
+    <p class="social-label">تابعينا</p>
+    <div class="social-links">
+        <a href="https://wa.me/201229507232"  target="_blank" rel="noopener" class="social-icon wa"    aria-label="واتساب">   <i class="fab fa-whatsapp"></i></a>
+        <a href="#" id="instaLink"             target="_blank" rel="noopener" class="social-icon insta" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
+        <a href="#" id="tiktokLink"            target="_blank" rel="noopener" class="social-icon tiktok"aria-label="تيك توك"> <i class="fab fa-tiktok"></i></a>
+        <a href="#" id="fbLink"                target="_blank" rel="noopener" class="social-icon fb"    aria-label="فيسبوك">  <i class="fab fa-facebook-f"></i></a>
+    </div>
+</div>
+
+<!-- ===== عن العلامة ===== -->
+<section id="about" class="about-section reveal-el">
+    <div class="about-inner">
+        <div class="about-badge">✦ قصتنا ✦</div>
+        <h3>عن <span class="gradient-text">Fionka</span></h3>
+        <p id="aboutText">دار تصاميم فاخرة أسستها Sahar Fionka لتقديم إكسسوارات ناعمة وعصرية بروح سينمائية. كل قطعة مصممة بدقة لإبراز أنوثة استثنائية.</p>
+        <div class="about-features">
+            <div class="about-feat"><i class="fas fa-gem"></i><span>جودة عالية</span></div>
+            <div class="about-feat"><i class="fas fa-paint-brush"></i><span>تصميم فريد</span></div>
+            <div class="about-feat"><i class="fas fa-heart"></i><span>صنع بحب</span></div>
+            <div class="about-feat"><i class="fas fa-certificate"></i><span>ضمان أصالة</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="faq-section reveal-el">
+    <div class="section-header">
+        <h2>الأسئلة <span class="gradient-text">الشائعة</span></h2>
+        <div class="sep"></div>
+    </div>
+    <div id="faqContainer" class="faq-container">
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">كيف أتواصل لإتمام الدفع؟ <i class="fas fa-chevron-down"></i></button>
+            <div class="faq-a">بعد اختيار منتجاتك، اضغطي "إتمام الشراء" وسيتم تحويلك للواتساب لإتمام الدفع بأي طريقة تناسبك.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">ما هي طرق الدفع المتاحة؟ <i class="fas fa-chevron-down"></i></button>
+            <div class="faq-a">متاح: فودافون كاش، إنستا باي، باي بال، بطاقة ائتمان، تحويل بنكي — كل الطرق عبر واتساب الدعم.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">ما مدة التوصيل؟ <i class="fas fa-chevron-down"></i></button>
+            <div class="faq-a">من 2 إلى 5 أيام عمل داخل مصر، والشحن الدولي يستغرق 7-14 يوم.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">ما سياسة الإرجاع؟ <i class="fas fa-chevron-down"></i></button>
+            <div class="faq-a">يمكنك الإرجاع خلال 14 يوماً من الاستلام بشرط أن يكون المنتج بحالته الأصلية.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">هل الشحن مجاني؟ <i class="fas fa-chevron-down"></i></button>
+            <div class="faq-a">الشحن مجاني على الطلبات التي تتجاوز 500 ج.م داخل مصر.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== تواصل ===== -->
+<section id="contact" class="contact-section reveal-el">
+    <div class="section-header">
+        <h2>تواصل <span class="gradient-text">معنا</span></h2>
+        <div class="sep"></div>
+    </div>
+    <div class="contact-inner">
+        <div class="contact-info">
+            <div class="contact-card">
+                <i class="fab fa-whatsapp"></i>
+                <h4>واتساب الدعم</h4>
+                <p>متاح 24/7 للرد على استفساراتك</p>
+                <a href="https://wa.me/201229507232" target="_blank" class="btn-primary" style="margin-top:10px;display:inline-flex">
+                    <i class="fab fa-whatsapp"></i> تواصل الآن
+                </a>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-shipping-fast"></i>
+                <h4>الشحن والتوصيل</h4>
+                <p>2-5 أيام عمل داخل مصر</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-undo"></i>
+                <h4>الإرجاع والاستبدال</h4>
+                <p>14 يوم ضمان لجميع المنتجات</p>
+            </div>
+        </div>
+        <div class="contact-form-wrap">
+            <h4>أرسلي رسالة</h4>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="contactName">الاسم *</label>
+                    <input type="text" id="contactName" placeholder="اسمك الكريم" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">البريد الإلكتروني</label>
+                    <input type="email" id="contactEmail" placeholder="example@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">رقم الهاتف</label>
+                    <input type="tel" id="contactPhone" placeholder="01XXXXXXXXX">
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">رسالتك *</label>
+                    <textarea id="contactMessage" rows="4" placeholder="اكتبي رسالتك هنا..."></textarea>
+                </div>
+                <button type="button" id="sendMessageBtn" class="btn-primary full-width">
+                    <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                </button>
+                <a href="https://wa.me/201229507232" target="_blank" class="btn-ghost full-width" style="margin-top:10px;justify-content:center;display:flex;align-items:center;gap:8px;">
+                    <i class="fab fa-whatsapp"></i> أو تواصل مباشرة عبر واتساب
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main><!-- /main -->
+
+<!-- ===== سلة التسوق ===== -->
+<div class="sidebar-overlay" id="cartOverlay"></div>
+<aside id="cartSidebar" class="cart-sidebar">
+    <div class="sidebar-header">
+        <h3><i class="fas fa-shopping-bag"></i> سلة التسوق</h3>
+        <button id="closeCart" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="cartItems" class="sidebar-items"></div>
+    <div class="sidebar-footer">
+        <div class="coupon-row">
+            <input type="text" id="couponInput" placeholder="كود الخصم" class="coupon-field" autocomplete="off">
+            <button id="applyCouponBtn" class="btn-coupon">تطبيق</button>
+        </div>
+        <div class="cart-summary">
+            <div class="summary-row"><span>المجموع الفرعي</span><span id="cartSubtotal">0 ج.م</span></div>
+            <div class="summary-row discount-row" id="discountRow" style="display:none">
+                <span>الخصم</span><span id="discountAmount" class="discount-val">-0 ج.م</span>
+            </div>
+            <div class="summary-row shipping-row">
+                <span>الشحن</span><span id="shippingCost">يحدد عند الطلب</span>
+            </div>
+            <div class="summary-row total-row">
+                <span>الإجمالي</span><span id="cartTotal" class="total-amount">0 ج.م</span>
+            </div>
+        </div>
+        <button id="checkoutBtn" class="btn-primary full-width">
+            <i class="fab fa-whatsapp"></i> إتمام الشراء عبر واتساب
+        </button>
+        <p class="checkout-note">
+            <i class="fas fa-info-circle"></i>
+            سيتم تحويلك لواتساب الدعم لإتمام الدفع
+        </p>
+    </div>
+</aside>
+
+<!-- ===== المفضلة ===== -->
+<div class="sidebar-overlay" id="wishOverlay"></div>
+<aside id="wishlistSidebar" class="wishlist-sidebar">
+    <div class="sidebar-header">
+        <h3><i class="far fa-heart"></i> المفضلة</h3>
+        <button id="closeWishlist" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="wishlistItems" class="sidebar-items"></div>
+</aside>
+
+<!-- ===== مودال المعاينة السريعة ===== -->
+<div id="quickModal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content quick-modal-content" id="quickModalContent"></div>
+</div>
+
+<!-- ===== مودال المقارنة ===== -->
+<div id="compareModal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content compare-modal-content">
+        <button class="modal-close" id="closeCompareModal">&times;</button>
+        <h2><i class="fas fa-balance-scale"></i> مقارنة المنتجات</h2>
+        <div id="compareTableWrap" class="compare-table-wrap"></div>
+    </div>
+</div>
+
+<!-- ===== مودال إضافة تقييم ===== -->
+<div id="reviewModal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <button class="modal-close" id="closeReviewModal">&times;</button>
+        <h2><i class="fas fa-star"></i> أضف تقييمك</h2>
+        <div class="review-form">
+            <div class="form-group">
+                <label>اسمك *</label>
+                <input type="text" id="reviewName" placeholder="اسمك الكريم">
+            </div>
+            <div class="form-group">
+                <label>تقييمك *</label>
+                <div class="star-rating" id="starRating">
+                    <i class="far fa-star" data-val="1"></i>
+                    <i class="far fa-star" data-val="2"></i>
+                    <i class="far fa-star" data-val="3"></i>
+                    <i class="far fa-star" data-val="4"></i>
+                    <i class="far fa-star" data-val="5"></i>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>رأيك *</label>
+                <textarea id="reviewText" rows="3" placeholder="شاركي تجربتك مع Fionka..."></textarea>
+            </div>
+            <button id="submitReviewBtn" class="btn-primary full-width">
+                <i class="fas fa-paper-plane"></i> إرسال التقييم
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== مودال سياسة الخصوصية ===== -->
+<div id="privacyModal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+        <button class="modal-close" id="closePrivacyModal">&times;</button>
+        <h2><i class="fas fa-shield-alt"></i> سياسة الخصوصية</h2>
+        <div class="privacy-content" id="privacyContent">
+            <p>نحن في Fionka نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.</p>
+            <h4>البيانات التي نجمعها:</h4>
+            <p>نجمع فقط المعلومات الضرورية لإتمام طلبك مثل الاسم ورقم الهاتف والعنوان.</p>
+            <h4>كيف نستخدم بياناتك:</h4>
+            <p>نستخدم بياناتك حصرياً لمعالجة طلباتك والتواصل معك بشأن الطلب.</p>
+            <h4>لا نشارك بياناتك:</h4>
+            <p>لا نبيع أو نشارك بياناتك مع أي طرف ثالث تحت أي ظرف.</p>
+            <h4>الكوكيز:</h4>
+            <p>نستخدم الكوكيز لتحسين تجربة التصفح وحفظ تفضيلاتك. يمكنك رفض الكوكيز من إعدادات متصفحك.</p>
+            <h4>حقوقك:</h4>
+            <p>يحق لك طلب حذف بياناتك في أي وقت عبر التواصل معنا على واتساب.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== واتساب عائم ===== -->
+<a href="https://wa.me/201229507232" id="whatsappFloat" class="whatsapp-float" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+    <i class="fab fa-whatsapp"></i>
+    <span class="wa-pulse"></span>
+    <span class="wa-tooltip">تواصل معنا</span>
+</a>
+
+<!-- ===== زر العودة للأعلى ===== -->
+<button id="backToTop" class="back-to-top" aria-label="العودة للأعلى" style="display:none">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- ===== Toast ===== -->
+<div id="toast" role="alert" aria-live="polite"></div>
+
+<!-- ===== الفوتر ===== -->
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-brand">
+            <div class="footer-logo">Fionka<span>.</span></div>
+            <p id="footerTagline">إكسسوارات فاخرة بروح سينمائية</p>
+            <div class="footer-social">
+                <a href="https://wa.me/201229507232" target="_blank" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" id="footerInsta"   target="_blank" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
+                <a href="#" id="footerTiktok"  target="_blank" aria-label="تيك توك"><i class="fab fa-tiktok"></i></a>
+                <a href="#" id="footerFb"      target="_blank" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+        <div class="footer-links-col">
+            <h4>روابط سريعة</h4>
+            <a href="#home">الرئيسية</a>
+            <a href="#products">المنتجات</a>
+            <a href="#offers">العروض</a>
+            <a href="#about">عن العلامة</a>
+            <a href="#contact">تواصل معنا</a>
+        </div>
+        <div class="footer-links-col">
+            <h4>الأقسام</h4>
+            <a href="#" data-cat-footer="rings">خواتم</a>
+            <a href="#" data-cat-footer="earrings">انسيالات</a>
+            <a href="#" data-cat-footer="necklaces">سلاسل</a>
+            <a href="#" data-cat-footer="watches">ساعات</a>
+            <a href="#" data-cat-footer="couples">كابلز</a>
+        </div>
+        <div class="footer-links-col">
+            <h4>الدعم</h4>
+            <a href="https://wa.me/201229507232" target="_blank">واتساب الدعم</a>
+            <a href="#faq">الأسئلة الشائعة</a>
+            <a href="#" id="privacyFooterLink">سياسة الخصوصية</a>
+            <a href="#contact">تواصل معنا</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Fionka — Owned by Sahar Fionka — All Rights Reserved</p>
+        <p class="designer">Designed with ♥ by Salem</p>
+        <button id="adminFooterBtn" class="admin-footer-btn">
+            <i class="fas fa-lock"></i> لوحة الإدارة
+        </button>
+    </div>
+</footer>
+
+<script src="api.js"></script>
+<script src="script.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
