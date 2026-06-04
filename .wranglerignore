@@ -1,0 +1,7 @@
+node_modules/
+.wrangler/
+uploads/
+*.db
+.git/
+.gitignore
+.wranglerignore
